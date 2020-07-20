@@ -2,6 +2,7 @@ package Imperative;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -32,7 +33,13 @@ public class Main {
                 .forEach(System.out::println);
         //OR
         System.out.println("Declarative approuch 2");
-        List<Person> females2 = people.stream().filter(person -> Gender.FEMALE.equals(person.gender))
+//        List<Person> females2 = people.stream().filter(person -> Gender.FEMALE.equals(person.gender))
+//                .collect(Collectors.toList());
+//        females2.forEach(System.out::println);
+
+        //java.until.function.Predicate
+        Predicate<Person> personPredicate = person -> Gender.FEMALE.equals(person.gender);
+        List<Person> females2 = people.stream().filter(personPredicate)
                 .collect(Collectors.toList());
         females2.forEach(System.out::println);
 
